@@ -1,10 +1,25 @@
 import Link from "next/link";
 import Carousel from "react-multi-carousel";
-
+import axios from '../../components/axios/axios';
+import { useEffect, useState } from "react";
 const data = [
     "/tehe.jpg", "/rank.jpg", "/fvrsir.jpg", "/stte.jpg"
 ]
 const DownSlider = () => {
+    const [event,setEvent] = useState([])
+    useEffect(()=>{
+        try {
+            axios.get("/notice" )
+            .then(res=>{
+                console.log(res.data.result);
+             setEvent(res.data.result)
+            }).catch(err=>{
+             console.log(err);
+            })
+          } catch (error) {
+            console.log(error.message);
+          }
+    },[])
     return (
         <div className="container mx-auto">
 
@@ -80,7 +95,7 @@ const DownSlider = () => {
             </div>
 
             <div className="text-4xl font-semibold my-5 text-red-600 border py-2 px-1 "> <marquee direction="right"
-             behavior="alternate"> Upcomming Event Notice. <Link href="http://google.com">google</Link> </marquee></div>
+             behavior="alternate">  {event.map((item,i)=><span key={i}>{item.name}</span>)}  </marquee></div>
         </div>
     );
 };

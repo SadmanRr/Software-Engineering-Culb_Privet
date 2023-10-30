@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { FaBeer, FaFacebook, FaInstagram, FaSkype, FaTwitter } from 'react-icons/fa';
 const Layout = ({children}) => {
-     const [cookies, setCookie] = useCookies(['token']);
+     const [cookies, setCookie,removeCookie] = useCookies(['token']);
      const [token,setToken] = useState("")
       useEffect(()=>{
         if(window!=undefined){
@@ -52,6 +52,12 @@ const Layout = ({children}) => {
           setData([])
         }
       },[toggle])
+      const logout = () =>{
+        if(window!=undefined){
+         removeCookie("token",{path:"/"})
+           
+        }
+      }
     return (
         <div>
              <nav class="flex items-center justify-between p-4 bg-gray-800 text-white">
@@ -76,6 +82,8 @@ const Layout = ({children}) => {
   <Link href="/certificate" className="nav-link mx-2">Certificate</Link>
   <Link href="/events" className="nav-link mx-2">Event</Link>
 { !token && <Link href="/login" className="nav-link mx-2">Login   </Link>}
+{ token && <Link href="/dahboard/event" className="nav-link mx-2">Dashboard</Link>}
+{ token && <button onClick={logout} className="nav-link mx-2">Logout</button>}
   
 </div>
 

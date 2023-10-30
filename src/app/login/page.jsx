@@ -3,26 +3,28 @@ import axios from "../../components/axios/axios";
 import Layout from "@/components/customLayout/Layout";
  
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
   const [user,setUser] = useState({});
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("")
-  const [cookies, setCookie] = useCookies(['token']);
-
+  const [cookies, setCookie,removeCookie] = useCookies(['token']);
+   const router = useRouter()
   const handleLogin =(e)=>{
      e.preventDefault()
     try {
       axios.post("/user/login",{email,password})
       .then(res=>{
       //  console.log(res);
-      if(res.status==200){
-    
+       alert("ok")
+         router.push("/")
         setCookie('token',res.data.token, { path: '/' })
-        router.push("/")
-         }
+      
+       
       }).catch(err=>{
        console.log(err);
       })
@@ -30,6 +32,7 @@ const Login = () => {
       console.log(error.message);
     }
   }
+  
     return (
       <Layout>
 <div className="flex items-center justify-center min-h-screen bg-gray-100">
