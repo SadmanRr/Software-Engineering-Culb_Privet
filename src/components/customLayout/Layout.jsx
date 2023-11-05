@@ -15,21 +15,21 @@ const Layout = ({children}) => {
       const [data,setData] = useState([])
       const message = [
         {
-        q:"what is your name",
-        a:"my name is malek"
+        q:"What is your name",
+        a:"my name is Sadman"
       },
 
         {
-        q:"wh",
-        a:"my name is sadman"
+        q:"ID",
+        a:"201-35-635"
       },
         {
-        q:"1",
-        a:"my name is sariar votora"
+        q:"University",
+        a:"Daffodil International university"
       },
         {
-        q:"2",
-        a:"my name is sadman votora"
+        q:"Club name",
+        a:"Software Engineering Club"
       },
        
     ]

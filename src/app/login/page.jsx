@@ -20,6 +20,7 @@ const Login = () => {
       axios.post("/user/login",{email,password})
       .then(res=>{
       //  console.log(res);
+      router.refresh()
        alert("ok")
          router.push("/")
         setCookie('token',res.data.token, { path: '/' })

@@ -35,7 +35,7 @@ const Home = () => {
     <Layout>
     <div className="bg-gray-100 min-h-screen p-4 flex justify-center items-center">
       <div className="bg-white p-8 rounded shadow-md max-w-md">
-        <h1 className="text-2xl font-semibold mb-4">Post Data with Image</h1>
+        <h1 className="text-2xl font-semibold mb-4">Update Notice</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-sm font-medium">Name:</label>

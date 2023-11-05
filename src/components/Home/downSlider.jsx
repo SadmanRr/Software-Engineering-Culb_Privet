@@ -95,7 +95,7 @@ const DownSlider = () => {
             </div>
 
             <div className="text-4xl font-semibold my-5 text-red-600 border py-2 px-1 "> <marquee direction="right"
-             behavior="alternate">  {event.map((item,i)=><span key={i}>{item.name}</span>)}  </marquee></div>
+             behavior="alternate">  {event.slice(0,1).map((item,i)=><span key={i}>{item.name}</span>)}  </marquee></div>
         </div>
     );
 };
